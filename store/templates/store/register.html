@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="login-container">
+        <div class="form-container register">
+            <div class="login-form">
+                <div class="title">
+                    <h2>
+                        Signup
+                    </h2>
+                    <span></span>
+                </div>
+                    <br>
+            <form action="{% url "register" %}" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                    
+                    <button type="submit">Signup</button>
+                    <br>
+                    
+                </form>
+                <br>
+                {% comment %} <br> {% endcomment %}
+                <small>
+                    By signing up you have agreed to our
+                    <br>
+                    <center>
+                        <a href="">
+                            Terms & Conditions
+                        </a>
+                    </center>
+                </small>
+                <br>
+                <div class="auth">
+                    <button>
+                        <a href="{% url "login" %}">Login 
+                        </a>
+                    </button>
+                        <div class="google">
+                            <a href="">
+                                G
+                            </a>
+                        </div>
+                </div>
+            </div>
+            <div class="welcome-div">
+                
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+

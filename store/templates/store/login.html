@@ -1,0 +1,50 @@
+{% comment %} {% extends "base.html" %} {% endcomment %}
+{% load static %}
+<link rel="stylesheet" href="{% static "styles/statics.css" %}">
+{% block content %}
+
+    <div class="login-container">
+        <div class="form-container login">
+            <div class="login-form">
+                    <div class="title">
+                        <h2>
+                            Login
+                        </h2>
+                        <span></span>
+                    </div>
+                    <br>
+                    
+            <form action="{% url "login" %}" method="POST">
+                    {% csrf_token %}
+
+                    
+                        <input type="text" class="form-control" name="username" placeholder="Enter your username...">                       
+                    
+                        <input type="password" class="form-control" name="password" placeholder="Enter your password...">
+                        
+                    <br><br>
+                            <button type="submit" class="btn btn-secondary">
+                                Login
+                            </button>
+                </form>
+                <a href="">Forgotten password?</a>
+                
+                    <br>
+                    <div class="auth">
+                        <button>
+                            <a href="{% url "register" %}">Signup 
+                            </a>
+                        </button>
+                            <div class="google">
+                                <a href="">
+                                    G
+                                </a>
+                            </div>
+                    </div>
+            </div>
+            <div class="welcome-div">
+                
+            </div>
+        </div>
+    </div>
+{% endblock content %}

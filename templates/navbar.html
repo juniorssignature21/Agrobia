@@ -1,0 +1,34 @@
+{% load static %}
+
+<div class="topnav">
+    <div class="logo-div">
+        Logo
+    </div>
+    <nav>
+        <a href="{% url "home" %}">Home</a>
+        {% comment %} <a href="About">About</a> {% endcomment %}
+        <a href="{% url "shop" %}">Shop</a>
+        <a href="categories">Categories</a>
+    </nav>
+    <img src="{% static "image/menu.png" %}" alt="" id="Menubtn">
+    <a href="" class="icon-cart">
+        <img src="{% static "image/cart.png" %}" alt="">
+        <span>0</span>
+    </a>
+    <div class="user-info">
+        {% if user.is_authenticated %}
+        <img src="{% static "image/buy-1.jpg" %}" alt="">
+        <a href="{% url "logout" %}">
+            Logout
+        </a>
+        
+        {% else %}
+        <a href="{% url "login" %}">
+            Login
+        </a>
+        <a href="{% url "register" %}">
+            Sign up
+        </a>
+        {% endif %}
+    </div>
+</div>
