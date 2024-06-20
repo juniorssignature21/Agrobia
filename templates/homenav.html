@@ -1,0 +1,64 @@
+{% load static %}
+{% comment %} <link rel="stylesheet" href="{% static "styles/home.css" %}"> {% endcomment %}
+<div class="homenav">
+    <div class="logo">
+        <img src="{% static "image/logo.png" %}" alt="">
+    </div>
+    <nav>
+        <a href="">
+            Home
+        </a>
+        <a href="#service">
+            Service
+        </a>
+        <a href="">
+            About
+        </a>
+        <a href="">
+            Blog
+        </a>
+        <a href="#testimonial">
+            Testimonials
+        </a>
+
+    </nav>
+    <div id="dropdown-menu" class="dropdown-menu">
+        <a href="#hero">Home</a>
+        <a href="#feature">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#testimonial">Testimonials</a>
+        <a href="#faqs">FAQ</a>
+        <a href="#contact">Contact Us</a>
+        </div>
+        <i class="bi bi-list menu-icon" onclick="toggleMenu()"></i>
+    {% if user.is_authenticated %}
+    <div class="user-div">
+        <a href="">
+            <img src="{% static "image/cart.png" %}" alt="">
+        </a>
+        <a href="">
+            <img src="{% static "image/buy-1.jpg" %}" alt="">
+        </a>
+        <a href="{% url "logout" %}">
+            <span>
+                logout
+            </span>
+        </a>
+    </div>
+
+    {% else %}
+    <div class="register-btn">
+        <a href="{% url "login" %}">
+            <span>
+                Login
+            </span>
+        </a>
+        <a href="{% url "register" %}">
+            <span>
+                Sign Up
+            </span>
+        </a>
+
+    </div>
+    {% endif %}
+</div>

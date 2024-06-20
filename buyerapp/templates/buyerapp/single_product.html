@@ -1,0 +1,15 @@
+{% load static %}
+<link rel="stylesheet" href="{% static "styles/styles.css" %}">
+{% include "navbar.html" %}
+{% block content %}
+<div class="product-banner">
+    <h1>
+        Single Products
+    </h1>
+    <div class="route">
+        <a href="">Home</a>/
+        <a href="">Shop</a>
+        <a href="">Single Product</a>
+    </div>
+</div>
+{% endblock content %}

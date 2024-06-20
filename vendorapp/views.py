@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import ProductForm, VendorForm
 from vendor.models import Product, Farmers
 
-@login_required
+@login_required(login_url='login')
 def vendorform(request):
     if request.method == 'POST':
         form = VendorForm(request.POST)
@@ -15,8 +15,8 @@ def vendorform(request):
         form = VendorForm()
     context = {'form': form}
     return render(request, 'vendorapp/vendorform.html', context)
-
-@login_required
+ 
+@login_required(login_url='login')
 def productsupload(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
@@ -35,7 +35,7 @@ def productsupload(request):
     context = {'form': form}
     return render(request, 'vendorapp/index.html', context)
 
-@login_required
+@login_required(login_url='login')
 def product_pages(request):
     try:
         farmer = Farmers.objects.get(farmer=request.user)

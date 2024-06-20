@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect
 from .forms import SignUpForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from vendor.models import Product
+from categories.models import ProductCategory
 
-def home(request):
-    return render(request, 'base.html')
+# def home(request):
+#     return render(request, 'store/home.html')
 
 def register_user(request):
     form = SignUpForm()
@@ -44,3 +46,13 @@ def logout_user(request):
     logout(request)
     messages.success(request, ("you have been logged out!!!"))
     return redirect('home')
+
+def product_section(request):
+    product = Product.objects.all()[:6]
+    categories = ProductCategory.objects.all()
+    context = {'product': product, 'categories': categories}
+    return render(request, 'store/home.html', context)
+
+
+    
+    
