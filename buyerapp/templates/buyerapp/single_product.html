@@ -1,5 +1,5 @@
 {% load static %}
-<link rel="stylesheet" href="{% static "styles/styles.css" %}">
+<link rel="stylesheet" href="{% static "styles/style.css" %}">
 {% include "navbar.html" %}
 {% block content %}
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600">
@@ -17,8 +17,104 @@
     </div>
 </div>
 
-<img src="{{product.image.url}}" alt="">
-<img src="{{product.imagesample1.url}}" alt="">
-<img src="{{product.imagesample2.url}}" alt="">
+<div class="row">
+    <div class="col">
+        <img src="{{product.image.url}}"  width="100%" id="ProductImg">
+        <div class="small-img-col">
+            <img src="{{product.imagesample2.url}}"  width="100%" class="SmallImg">
+            <img src="{{product.imagesample1.url}}" width="100%"  class="SmallImg">
+        </div>
+    </div>
+    <div class="col-2">
+        <h1>
+            {{product.name}}
+        </h1>
+        <h3>
+            <b>
+                N{{product.price}}
+            </b>
+        </h3>
+        <p>
+            {{product.description}}
+        </p>
+        <br>
+        <hr>
+        <br>
+        <b>
+           Type: {{product.productcategories}}
+        </b>
+        <br>
+        <br>
+        <b>
+            Weight: {{product.weight}}
+        </b>
+        <br>
+        <br>
+        <div class="addtocart-btn">
+            <div class="btn-col">
+                <span>1</span>
+            </div>
+            <div class="btn-col2">
+                <span>
+                    <b>-</b>
+                </span>
+                <span>
+                    <b>+</b>
+                </span>
+            </div>
+        </div>
+        <hr>
+        <div class="socials">
+            <b>
+                Share:
+            </b>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <a href="">
+                f
+            </a>
+            <a href="">
+                X
+            </a>
+            <a href="">
+                in
+            </a>
+        </div>
+    </div>
+</div>
+{% include "footer.html" %}
+<script>
+    var ProductImg = document.getElementById("ProductImg");
+    var SmallImg = document.getElementsByClassName("SmallImg");
+
+        SmallImg[0].onclick = function()
+        {
+            ProductImg.src = SmallImg[0].src;
+        }
+        SmallImg[1].onclick = function()
+        {
+            ProductImg.src = SmallImg[1].src;
+        }
+        SmallImg[2].onclick = function()
+        {
+            ProductImg.src = SmallImg[2].src;
+        }
+        SmallImg[3].onclick = function()
+        {
+            ProductImg.src = SmallImg[3].src;
+        }
+</script>
+{% comment %} <div class="row">
+    <div class="col-2">
+        <img src="{{product.image.url}}"  id="ProductImg">
+        <div class="small-img-row">
+            <div class="small-img-col">
+                <img src="{{product.imagesample1.url}}"  class="SmallImg">
+            </div>
+            <div class="small-img-col">
+                <img src="{{product.imagesample2.url}}"  class="SmallImg">
+            </div>
+        </div> {% endcomment %}
 
 {% endblock content %}
