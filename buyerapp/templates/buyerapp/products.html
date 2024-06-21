@@ -9,26 +9,18 @@
 </center>
 {% include "navbar.html" %}
 {% block content %}
-
-    <header>
-        {% comment %} <img src="{% static "image/rice.jpg" %}" alt=""> {% endcomment %}
-        <h1>
-            Product Page
-        </h1>
-    </header>
-    <div class="container">
-        <div class="ListProduct">
-    {% for product in products  %}
-            <div class="item">
-                <img src="{{product.image.url}}" alt="">
-                <h2>{{product.name}}</h2>
-                <div class="price">${{product.price}}</div>
-                <div >seller: {{product.vendor}}</div>
-                <button class="addCart">Add To Cart</button>
-            </div>
-            {% endfor %}
-        </div>
+<div class="product-banner">
+    <h1>
+        Shop List
+    </h1>
+    <div class="route">
+        <a href="">Home</a>&nbsp; /
+        <a href="">Shop</a>&nbsp;/
+        <a href="">Single Product</a>
     </div>
+</div>
 
+    
 
+{% include "footer.html" %}
 {% endblock %}
