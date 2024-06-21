@@ -1,0 +1,55 @@
+{% load static %}
+<link rel="stylesheet" href="{% static "styles/style.css" %}">
+
+{% block content %}
+{% include "navbar.html" %}
+<div class="product-banner">
+    <h1>
+        Shopping Cart
+    </h1>
+    <div class="route">
+        <a href="">Home</a>&nbsp; /
+        <a href="">Shop</a>&nbsp;/
+        <a href="">Single Product</a>
+    </div>
+</div>
+<section class='shoppingCart'>
+    <table>
+    
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        
+        <tr>
+            <td>
+
+                <img src="{% static "image/image 23.png" %}" alt="">
+                <b>Apple</b>
+            </td>
+            <td>
+                N400
+            </td>
+            <td>
+                       <div class="addtocart-btn">
+            <div class="btn-col">
+                <span>1</span>
+            </div>
+            <div class="btn-col2">
+                <span>
+                    <b>-</b>
+                </span>
+                <span>
+                    <b>+</b>
+                </span>
+            </div>
+        </div>
+            </td>
+            <td>
+                N400
+            </td>
+        </tr>
+    </table>
+</section>
+{% include "footer.html" %}
+{% endblock content %}

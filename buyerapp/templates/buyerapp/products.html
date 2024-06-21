@@ -1,12 +1,7 @@
 {% comment %} {% extends "base.html" %} {% endcomment %}
 {% load static %}
 <link rel="stylesheet" href="{% static "styles/index.css" %}">
-<center>
-    <a href="{% url "vendor-form" %}" style="display: block; width: 100vw; background: #000; text-decoration: none; color: #fff;">
-        sell on agrobia
-    </a>
-    
-</center>
+
 {% include "navbar.html" %}
 {% block content %}
 <div class="product-banner">
