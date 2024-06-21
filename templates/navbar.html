@@ -1,7 +1,7 @@
 {% load static %}
 
-<div class="topnav">
-    <div class="logo-div">
+<div class="homenav">
+    <div class="logo">
         Logo
     </div>
     <nav>
@@ -15,22 +15,35 @@
         <img src="{% static "image/cart.png" %}" alt="">
         <span>0</span>
     </a>
-    <div class="user-info">
-        {% if user.is_authenticated %}
-        <img src="{% static "image/buy-1.jpg" %}" alt="">
-        <a href="{% url "logout" %}">
-            Logout
+    
+    {% if user.is_authenticated %}
+    <div class="user-div">
+        <a href="">
+            <img src="{% static "image/cart.png" %}" alt="">
         </a>
-        <small>
-            {{user.username}}
-        </small>
-        {% else %}
+        <a href="">
+            <img src="{% static "image/buy-1.jpg" %}" alt="">
+        </a>
+        <a href="{% url "logout" %}">
+            <span>
+                logout
+            </span>
+        </a>
+    </div>
+
+    {% else %}
+    <div class="register-btn">
         <a href="{% url "login" %}">
-            Login
+            <span>
+                Login
+            </span>
         </a>
         <a href="{% url "register" %}">
-            Sign up
+            <span>
+                Sign Up
+            </span>
         </a>
-        {% endif %}
+
     </div>
+    {% endif %}
 </div>

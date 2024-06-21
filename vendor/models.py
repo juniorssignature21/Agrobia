@@ -20,6 +20,8 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='uploads/product/', default='')
+    imagesample1 = models.ImageField(upload_to='uploads/product/', default='')
+    imagesample2 = models.ImageField(upload_to='uploads/product/', default='')
     stock = models.IntegerField()
     productcategories = models.ForeignKey(ProductCategory, related_name='products', on_delete=models.CASCADE, default='')
     weight = models.CharField(max_length=10, default='')
