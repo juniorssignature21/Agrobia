@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import SignUpForm
+from .forms import SignUpForm, UserImg
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from vendor.models import Product
@@ -53,6 +53,13 @@ def product_section(request):
     context = {'product': product, 'categories': categories}
     return render(request, 'store/home.html', context)
 
-
-    
+def user_img(request):
+    form = UserImg()
+    if request.method == 'POST':
+        form = UserImg(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    context={'form': form}
+    return render(request, 'store/image-upload.html', context)
     
