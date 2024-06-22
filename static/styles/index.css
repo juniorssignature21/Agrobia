@@ -24,20 +24,39 @@
     width: 30vw;
     display: flex;
     justify-content: space-evenly;
+    position: relative;
 }
+
 .homenav .register-btn a{
     text-decoration: none;
     display: inline;
-    width: 120px;
+    width: 90px;
     /* height: 40px; */
     padding: 5px;
     text-align: center;
-    background-color: #b95e31;
+    background-color: #007200;
     color: #eee;
     border-radius: 20px;
+    font-weight: 600;
 }
+.homenav .register-btn a:nth-child(2){
+    position: absolute;
+    right: 19%;
+    background: transparent;
+    border: 1px solid #007200;
+    color: #007200;
+    /* padding: 5px; */
+}
+.homenav .register-btn a:nth-child(2):hover{
+    background-color: #007200;
+    color: #fff;
+}
+
 .bi-list{
     display: none;
+    font-size: 40px;
+    color: #007200;
+    /* background-color: #007200; */
 }
 .homenav nav{
     width: auto;
@@ -48,13 +67,14 @@
 .homenav .user-div a:nth-child(3){
     text-decoration: none;
     display: inline;
-    width: 120px;
+    width: 90px;
     /* height: 40px; */
-    padding: 10px;
+    padding: 5px;
     text-align: center;
-    background-color: #b95e31;
+    background-color: #007200;
     color: #eee;
     border-radius: 20px;
+    font-weight: 600;
 }
 .homenav nav{
     text-align: center;
@@ -121,7 +141,6 @@
     z-index: 1;
     transition: color 0.5s;
     margin-top: 10px;
-    border-radius: 20px;
 }
 .btn-div a span{
     width: 0;
@@ -129,17 +148,17 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: #b95e31;
+    background: #eee;
     z-index: -1;
     transition: 1.5s;
-    border-radius: 20px;
 }
 .btn-div a:hover span{
     width: 100%;
 }
 .btn-div a:hover{
-    /* color: #000; */
+    color: #007200;
     border: none;
+    font-weight: 600;
   }
   .dropdown-menu {
     display: none;
@@ -260,7 +279,7 @@
 }
 #about img{
     width: 35%;
-    border-bottom-left-radius: 400px;
+    /* border-bottom-left-radius: 400px; */
 }
 .about{
     text-align: left;
@@ -368,9 +387,7 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
-.blog-div{
-    text-align: left;
-}
+
 .blog-div p{
     width: 300px;
 }
@@ -709,146 +726,98 @@ td img{
     width: 140px;
 }
 @media only screen and (max-width:768px) {
-    .welcome-div{
+    /* ==========================Home page responsiveness=========================== */    
+     
+    .homenav .register-btn a:nth-child(2){
         display: none;
     }
-    .form-container{
-        width: 450px;
+    .homenav nav{
+        display: none;
     }
-    .form-container.register{
-        width: 400px;
-    }
-    /* =========================shopping cart=============================== */
-    #Menubtn{
+    .bi-list{
         display: flex;
-        width: 30px;
-    }
-    nav{
-        display: none;
     }
 }
 @media only screen and (max-width:425px){
-    .form-container{
-        width: 400px;
+    /* ==========================Home page responsiveness=========================== */    
+    .banner-div h3{
+        font-size: 40px;
     }
-    .login-form{
-        width: 400px;
+    .banner-div p{
+        width: 90vw;
     }
-    .form-container.register{
-        width: 350px;
+    #about img{
+        width: 100%;
     }
-    .form-container.register .login-form{
-        width: 350px;
+    .about-text{
+        width: 90vw;
     }
-    .form-container.register .login-form button{
-        width: 250px;
+    .about-text p{
+        width: 90vw;
     }
-    .form-container.register .auth button {
-        width: 150px;
+    .testimonial-div{
+        margin: 20% 5px;
+        height: 620px;
+        flex-wrap: wrap;
     }
-    /* =========================shopping cart=============================== */
-    .user-info{
+    .testimonial-div img{
+        width: 100%;
+    }
+    .testimonial-div p{
+        font-size: 12px;
+    }
+    .testimonial-div small{
+        margin-top: 5%;
+    }
+    .blog-div{
+    margin: 20px;
+
+    }
+    .blog-div img{
+        width: 100%;
+   }
+   .blog{
+       align-items: center;
+       justify-content: center;
+   }
+   .blog-div .user-info{
+       width: 100%;
+   }
+   .blog-div .user-info img{
+       width: 40px;
+       height: 40px;
+   }
+}
+
+
+@media only screen and (max-width:375px){
+    /* ==========================Home page responsiveness=========================== */
+    .banner-div h3{
+        font-size: 35px;
+    }
+    .category-div{
+        width: 300px;
+    }
+}
+@media only screen and (max-width:320px){    
+    /* ==========================Home page responsiveness=========================== */
+    .banner-div h3{
+        font-size: 30px;
+    }
+    .banner-div p{
+        font-size: 12px;
+        width: 90vw;
+    }
+    .homenav .register-btn{
         width: 40vw;
     }
     
-}
-/* ============================================vendor form================================================ */
-.vendor-form{
-    width: screen;
-    height: 100vh;
-    background:linear-gradient(rgb(0, 0, 0), rgb(0,0,0,0.5)), url(../image/rice.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* flex-direction: column; */
-}
-.vendor-form .form-div{
-    width: 500px;
-    height: 100vh;
-    font-size: 20px;
-    background-color: #b95e31;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-.vendor-form .form-div form{
-    text-align: center;
-    width: 500px;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-.vendor-form label{
-    display: block;
-    color: #fff;
-}
-.vendor-form input{
-    margin: 10px 0;
-    width: 400px;
-    height: 40px;
-    border: 5px solid #fff;
-    border-radius: 20px;
-    background-color: #eee;
-    padding: 0 20px;
-    /* flex-wrap: wrap; */
-}
-.vendor-form input:focus{
-    outline: none;
-}
-@media only screen and (max-width:375px){
-    .form-container{
-        width: 350px;
+    .testimonial-div{
+        height: 500px;
     }
-    .login-form{
-        width: 350px;
-    }
-    .login-form .google a{
-        width: 300px;
-    }
-    .form-container.register .auth button {
-        width: 150px;
-    }
-}
-@media only screen and (max-width:320px){
-    .form-container{
-        width: 300px;
-    }
-    .login-form{
-        width: 300px;
-    }
-    .login-form .google a{
+    
+    
+    .category-div{
         width: 250px;
-    }   
-    .login-form button{
-        width: 250px;
-    }
-    .form-container.register{
-        width: 280px;
-    }
-    .form-container.register .login-form{
-        width: 280px;
-    }
-    .form-container.register .login-form button{
-        width: 200px;
-    }
-
-    .form-container.register .auth button {
-        width: 150px;
-    }
-    .form-container.register .login-form input{
-        height: 35px;
-    }
-    /* =========================shopping cart=============================== */
-    .user-info{
-        width: 40vw;
-    }
-    header h1{
-        font-size: 45px ;
     }
 }
