@@ -13,3 +13,5 @@ def single_product(request, pk):
     product = Product.objects.get(id=pk)
     context = {'product': product}
     return render(request, 'buyerapp/single_product.html', context)
+
+

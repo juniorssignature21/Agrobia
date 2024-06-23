@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'buyerapp',
     'buyer',
     'store',
+    'cart',
     'categories',
     'django.contrib.admin',
     'django.contrib.auth',

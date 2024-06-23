@@ -26,3 +26,6 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order {self.id}"
+    
+class MyInfo(models.Model):
+    image = models.ImageField(upload_to='')
