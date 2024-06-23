@@ -1,12 +1,11 @@
 {% comment %} {% extends "base.html" %} {% endcomment %}
 {% load static %}
 <link rel="stylesheet" href="{% static "styles/index.css" %}">
-<center>
-    <a href="{% url "vendor-form" %}" style="display: block; width: 100vw; background: #000; text-decoration: none; color: #fff;">
-        sell on agrobia
-    </a>
-    
-</center>
+ <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
 {% include "navbar.html" %}
 {% block content %}
 <div class="product-banner">
@@ -20,6 +19,110 @@
     </div>
 </div>
 
+
+
+    
+      <section class="products">
+        <div class="filter">
+          <h2>Categories</h2>
+          <ul>
+            <li><input type="checkbox" checked /> Fruits</li>
+            <li><input type="checkbox" /> Vegetables</li>
+            <li><input type="checkbox" /> Food</li>
+            <li><input type="checkbox" /> Meat</li>
+          </ul>
+        </div>
+
+        <div class="product-list">
+          <div class="search-bar">
+            <input type="text" placeholder="Search for more products" />
+          </div>
+          <div class="products-grid">
+            <!-- Product cards -->
+            <div class="product-card">
+              <img src="{% static "image/apple.png" %}" alt="Apple" />
+              <h3>Apple</h3>
+              <div class="stars" style="color: yellow">★★★★★</div>
+              <p>$14.00</p>
+            </div>
+            <div class="product-card">
+              <img src="{% static "image/watermelon.png" %}" alt="Water Melon" />
+              <h3>Water Melon</h3>
+              <div class="stars" style="color: yellow">★★★★★</div>
+              <p>$14.00</p>
+            </div>
+            <div class="product-card">
+              <img src="{% static "image/banana.png" %}" alt="Banana" />
+              <h3>Banana</h3>
+              <div class="stars" style="color: yellow">★★★★★</div>
+              <p>$14.00</p>
+            </div>
+            <div class="product-card">
+              <img src="{% static "image/peaches.png" %}" alt="Peaches" />
+              <h3>Peaches</h3>
+              <div class="stars" style="color: yellow">★★★★★</div>
+              <p>$14.00</p>
+            </div>
+            <div class="product-card">
+              <img src="{% static "image/pineapple.png" %}" alt="Pineapple" />
+              <h3>Pineapple</h3>
+              <div class="stars" style="color: yellow">★★★★★</div>
+              <p>$14.00</p>
+            </div>
+            <div class="product-card">
+              <img src="{% static "image/blueberries.png" %}" alt="Blueberries" />
+              <h3>Blueberries</h3>
+              <div class="stars" style="color: yellow">★★★★★</div>
+              <p>$14.00</p>
+            </div>
+            <div class="product-card">
+              <img src="{% static "image/pumpkin leaf.jpeg" %}" alt="Pumpkin Leaf" />
+              <h3>Pumpkin Leaf</h3>
+              <div class="stars" style="color: yellow">★★★★★</div>
+              <p>$14.00</p>
+            </div>
+            <div class="product-card">
+              <img src="{% static "image/cucumber.png" %}" alt="Cucumber" />
+              <h3>Cucumber</h3>
+              <div class="stars" style="color: yellow">★★★★★</div>
+              <p>$14.00</p>
+            </div>
+            <div class="product-card">
+              <img src="{% static "image/pumpkin.png" %}" alt="Pumpkin" />
+              <h3>Pumpkin</h3>
+              <div class="stars" style="color: yellow">★★★★★</div>
+              <p>$14.00</p>
+            </div>
+            <div class="product-card">
+              <img src="{% static "image/corn.png" %}" alt="Corn" />
+              <h3>Corn</h3>
+              <div class="stars" style="color: yellow">★★★★★</div>
+              <p>$14.00</p>
+            </div>
+            <div class="product-card">
+              <img src="{% static "image/ricebag.png" %}" alt="Rice" />
+              <h3>Rice</h3>
+              <div class="stars" style="color: yellow">★★★★★</div>
+              <p>$14.00</p>
+            </div>
+            <div class="product-card">
+              <img src="{% static "image/beef.png" %}" alt="Beaf" />
+              <h3>Beaf</h3>
+              <div class="stars" style="color: yellow">★★★★★</div>
+              <p>$14.00</p>
+            </div>
+          </div>
+          <div class="pagination">
+            <a href="#">&lt;</a>
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">&gt;</a>
+          </div>
+        </div>
+      </section>
+    </main>
     
 
 {% include "footer.html" %}
