@@ -621,55 +621,6 @@ header h1{
     margin: 80px auto;
     width: 1000px;
 }
-<<<<<<< HEAD
-
-.cart-info{
-    display: flex;
-    flex-wrap: wrap;
-}
-.cart-info img{
-    width: 80px;
-    padding-right: 20px;
-}
-/* =========================product page =============================== */
-
-.ListProduct .item img{
-    width: 90%;
-}
-.ListProduct{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-.ListProduct .item{
-    background-color: #eeeee6;
-    padding: 20px;
-    border-radius: 20px;
-    text-align: center ;
-    max-height: 400px;
-    filter: drop-shadow(0 30px 30px #0009);
-}
-.ListProduct .item h2{
-    font-weight: 500;
-    font-size: large;
-}
-.ListProduct .item .price{
-    letter-spacing: 7px;
-    font-size: small;
-}
-.ListProduct .item button{
-    background-color: #008000;
-    color: #eee;
-    padding: 5px 10px;
-    border-radius: 20px;
-    margin-top: 10px;
-    border: none;
-    cursor: pointer;
-}
-
-=======
-
->>>>>>> 7e5b300310a3ab4bfad362e5e0a28987f92ddac7
 /* =================================single product page========================================== */
 .product-banner{
     width: screen;
@@ -743,107 +694,6 @@ header h1{
     background-color: #eee;
     font-size: 20px;
 }
-<<<<<<< HEAD
-/* ====================================shop list====================================== */
-/* styles.css */
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li {
-  margin: 0 15px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-}
-
-.hero {
-  background-image: url("images/WhatsApp\ Image\ 2024-06-22\ at\ 13.26.44_0f570b2e.jpg");
-  background-size: cover;
-  color: #fff;
-  padding: 200px 20px;
-  text-align: center;
-}
-
-.breadcrumb a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.breadcrumb a:hover {
-  text-decoration: underline;
-}
-
-.products {
-  display: flex;
-  margin: 20px;
-}
-
-.filter {
-  flex: 1;
-  padding: 20px;
-  background: #f9f9f9;
-  margin-right: 20px;
-}
-
-.product-list {
-  flex: 3;
-}
-
-.search-bar {
-  text-align: right;
-  margin-bottom: 20px;
-}
-
-.search-bar input {
-  padding: 10px;
-  width: 100%;
-  max-width: 300px;
-}
-
-.products-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.product-card {
-  flex: 1 1 calc(25% - 20px);
-  border: 1px solid #ddd;
-  padding: 20px;
-  text-align: center;
-}
-
-.product-card img {
-  max-width: 100%;
-  height: auto;
-}
-
-.pagination {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.pagination a {
-  margin: 0 5px;
-  text-decoration: none;
-  color: #000;
-}
-
-
-
-
-
-
-
-=======
 /* =================================shopping cart========================================== */
 .shoppingCart{
     width: screen;
@@ -875,7 +725,6 @@ tr{
 td img{
     width: 140px;
 }
->>>>>>> 7e5b300310a3ab4bfad362e5e0a28987f92ddac7
 @media only screen and (max-width:768px) {
     /* ==========================Home page responsiveness=========================== */    
      
