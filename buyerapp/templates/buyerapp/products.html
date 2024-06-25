@@ -1,6 +1,6 @@
 {% comment %} {% extends "base.html" %} {% endcomment %}
 {% load static %}
-<link rel="stylesheet" href="{% static "styles/index.css" %}">
+<link rel="stylesheet" href="{% static "styles/styles.css" %}">
  <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
@@ -23,29 +23,40 @@
 
     
       <section class="products">
-        <div class="filter">
+        {% comment %} <div class="filter">
           <h2>Categories</h2>
           <ul>
-            <li><input type="checkbox" checked /> Fruits</li>
+            <li><a href="{% url "categories" "fertilizers" %}">Fruits</a></li>
             <li><input type="checkbox" /> Vegetables</li>
             <li><input type="checkbox" /> Food</li>
             <li><input type="checkbox" /> Meat</li>
           </ul>
-        </div>
+          <input type="checkbox" name="" id="">
+          <select name="" id="">
+            
+          </select>
+        </div> {% endcomment %}
 
         <div class="product-list">
           <div class="search-bar">
-            <input type="text" placeholder="Search for more products" />
+            
           </div>
           <div class="products-grid">
             <!-- Product cards -->
-            <div class="product-card">
-              <img src="{% static "image/apple.png" %}" alt="Apple" />
-              <h3>Apple</h3>
-              <div class="stars" style="color: yellow">★★★★★</div>
-              <p>$14.00</p>
-            </div>
-            <div class="product-card">
+             {% for product in products %}
+             <div class="product-card">
+               <img src="{{product.image.url}}" alt="Apple" />
+               <h3>{{product.name}}</h3>
+               <small>
+                {{product.category}}
+               </small>
+               <div class="stars" style="color: yellow">★★★★★</div>
+               <p>#{{product.price}}</p>
+               <button type="button" class="btn btn-secondary" value="{{product.id}}" id="add-cart">Add to cart</button>
+
+             </div>
+             {% endfor %}
+            {% comment %} <div class="product-card">
               <img src="{% static "image/watermelon.png" %}" alt="Water Melon" />
               <h3>Water Melon</h3>
               <div class="stars" style="color: yellow">★★★★★</div>
@@ -110,7 +121,7 @@
               <h3>Beaf</h3>
               <div class="stars" style="color: yellow">★★★★★</div>
               <p>$14.00</p>
-            </div>
+            </div> {% endcomment %}
           </div>
           <div class="pagination">
             <a href="#">&lt;</a>
@@ -122,8 +133,34 @@
           </div>
         </div>
       </section>
-    </main>
     
+    
+      <script>
 
+
+        // Check if button pressed
+        $(document).on('click', '#add-cart', function(e){
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '{% url "cart_add" %}',
+                data: {
+                    product_id: $('#add-cart').val(),
+                    product_qty: $('#qty-cart option:selected').text(),
+                    csrfmiddlewaretoken: '{{csrf_token}}',
+                    action: 'post'
+                },
+                
+                success: function(json){
+                    //console.log(json)
+                    document.getElementById("cart_quantity").textContent = json.qty
+                },
+                error: function(xhr, errmsg, err){
+    
+                }
+            });
+        })
+    
+    </script>
 {% include "footer.html" %}
 {% endblock %}

@@ -1,5 +1,5 @@
 {% load static %}
-<link rel="stylesheet" href="{% static "styles/index.css" %}">
+<link rel="stylesheet" href="{% static "styles/styles.css" %}">
 
 {% block content %}
 {% include "navbar.html" %}
@@ -21,14 +21,16 @@
             <th>Quantity</th>
             <th>Total</th>
         
+            {% if cart_products %}
+            {% for product in cart_products %}
         <tr>
             <td>
 
-                <img src="{% static "image/image 23.png" %}" alt="">
-                <b>Apple</b>
+                <img src={{product.image.url}} alt="">
+                <b>{{product.name}}</b>
             </td>
             <td>
-                N400
+                N{{product.price}}
             </td>
             <td>
                        <div class="addtocart-btn">
@@ -49,6 +51,9 @@
                 N400
             </td>
         </tr>
+        {% endfor %}
+
+        {% endif %}
     </table>
 </section>
 {% include "footer.html" %}

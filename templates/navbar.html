@@ -10,12 +10,15 @@
         <a href="{% url "shop" %}">Shop</a>
         <a href="categories">Categories</a>
     </nav>
+    <form action="{% url "shop" %}" method="GET">
+        <input name="q" placeholder="Search for more products" />
+        </form>
     <img src="{% static "image/menu.png" %}" alt="" id="Menubtn">
     
     
     {% if user.is_authenticated %}
     <div class="user-div">
-        <a href="{% url "shopping-cart" %}" class="icon-cart">
+        <a href="" class="icon-cart">
             <img src="{% static "image/cart.png" %}" alt="">
             <span>0</span>
         </a>

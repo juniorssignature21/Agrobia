@@ -23,13 +23,13 @@ def productsupload(request):
         if form.is_valid():
             product = form.save(commit=False)
             try:
-                farmer = Farmers.objects.get(farmer=request.user)
+                farmer = Farmers.objects.filter(farmer=request.user).first()
                 product.vendor = farmer
                 product.save()
                 return redirect('products-pages')
             except Farmers.DoesNotExist:
                 # Handle the case where the farmer does not exist
-                return redirect('vendor-form')
+                return redirect('vendorform')
     else:
         form = ProductForm()
     context = {'form': form}
@@ -38,7 +38,7 @@ def productsupload(request):
 @login_required(login_url='login')
 def product_pages(request):
     try:
-        farmer = Farmers.objects.get(farmer=request.user)
+        farmer = Farmers.objects.filter(farmer=request.user).first()
         products = Product.objects.filter(vendor=farmer)
     except Farmers.DoesNotExist:
         # Handle the case where the farmer does not exist

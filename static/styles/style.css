@@ -292,12 +292,13 @@
     font-size: 20px;
     width: 50vw;
 }
+/* #DB5B3F */
 /* =====================================products============================================ */
 #products{
     padding: 10%;
 
 }
-.products{
+.products-div{
     width: screen;
     height: auto;
     display: flex;
@@ -620,6 +621,35 @@ header h1{
 .container{
     margin: 80px auto;
     width: 1000px;
+}
+/* =================================product page========================================== */
+.products{
+    margin: 8%;
+    display: flex;
+    /* text-align: center; */
+    /* align-items: start; */
+    /* justify-content: center; */
+    flex-direction: column;
+}
+.products-list{
+    position: relative;
+}
+.search-bar{
+    position: absolute;
+    bottom: 40%;
+    right: 10%;
+}
+.products-grid{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90vw;
+}
+.product-card{
+    width: 250px;
+    margin: 20px;
+}
+.product-card img{
+    width: inherit;
 }
 /* =================================single product page========================================== */
 .product-banner{
