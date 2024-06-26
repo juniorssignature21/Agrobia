@@ -1,6 +1,6 @@
 {% comment %} {% extends "base.html" %} {% endcomment %}
 {% load static %}
-<link rel="stylesheet" href="{% static "styles/styles.css" %}">
+<link rel="stylesheet" href="{% static "style/styless.css" %}">
  <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
@@ -39,7 +39,10 @@
 
         <div class="product-list">
           <div class="search-bar">
-            
+            <form action="{% url "shop" %}" method="GET">
+              {% csrf_token %}
+              <input name="q" placeholder="search products">
+            </form>
           </div>
           <div class="products-grid">
             <!-- Product cards -->
@@ -48,11 +51,13 @@
                <img src="{{product.image.url}}" alt="Apple" />
                <h3>{{product.name}}</h3>
                <small>
-                {{product.category}}
-               </small>
-               <div class="stars" style="color: yellow">★★★★★</div>
+                {{product.categories}}
+              </small>
+              <span class="stars" style="color: yellow">★★★★★</span>
                <p>#{{product.price}}</p>
-               <button type="button" class="btn btn-secondary" value="{{product.id}}" id="add-cart">Add to cart</button>
+               <a href="{% url 'add_to_cart' product.id %}">
+                 <button type="button" class="addtocart" value="{{product.id}}" id="add-cart">Add to cart</button>
+                </a>
 
              </div>
              {% endfor %}
@@ -135,7 +140,7 @@
       </section>
     
     
-      <script>
+      {% comment %} <script>
 
 
         // Check if button pressed
@@ -161,6 +166,6 @@
             });
         })
     
-    </script>
+    </script> {% endcomment %}
 {% include "footer.html" %}
 {% endblock %}

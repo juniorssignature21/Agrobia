@@ -1,5 +1,5 @@
 {% load static %}
-<link rel="stylesheet" href="{% static "styles/styles.css" %}">
+<link rel="stylesheet" href="{% static "styles/styless.css" %}">
 
 {% block content %}
 {% include "navbar.html" %}
@@ -21,16 +21,20 @@
             <th>Quantity</th>
             <th>Total</th>
         
-            {% if cart_products %}
-            {% for product in cart_products %}
+        {% for item in cart_items %}
+            
         <tr>
             <td>
 
-                <img src={{product.image.url}} alt="">
-                <b>{{product.name}}</b>
+                <a href="{% url "product" item.product.id %}">
+                    <img src={{item.product.image.url}} alt="">
+                </a>
+                <b>{{item.product.name}}</b>
+            <a href="{% url 'remove_from_cart' item.product.id %}">Remove</a>
+
             </td>
             <td>
-                N{{product.price}}
+                N{{item.product.price}}
             </td>
             <td>
                        <div class="addtocart-btn">
@@ -51,10 +55,22 @@
                 N400
             </td>
         </tr>
-        {% endfor %}
+        <br>
 
-        {% endif %}
+        
+        {% endfor %}
+        
+    
     </table>
+    <br>
+    <br>
+    <br>
+    <a href="">
+        <button>
+            Proceed to check out
+        </button>
+    </a>
 </section>
 {% include "footer.html" %}
 {% endblock content %}
+{% comment %} 09160695230 {% endcomment %}

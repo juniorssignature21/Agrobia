@@ -195,6 +195,7 @@
     padding-bottom: 4%;
     font-size: 30px;
     color: #007200;
+    text-align: center;
 }
 .title h3{
     margin: auto;
@@ -339,6 +340,7 @@
     top: 15px;
     left: 5%;
 }
+
 /* ===========================testimonials========================== */
 #testimonial{
     padding: 10%;
@@ -424,128 +426,61 @@ footer nav a{
     width: 40px;
     /* background-color: #007200; */
 }
-/* =============================== Login Page =================================== */
-.form-container.register{
-    height: 600px;
-    width: 800px;
-}
-.form-container.login{
-    height: 400px;
-}
-.form-container.register .welcome-div{
-    width: 400px;
-}
-.login-container{
+/* =============================== Register Page =================================== */
+.register-container{
     width: screen;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: #eee; */
-    background:linear-gradient(rgb(185, 94, 49, 0.5), rgb(0,0,0,0.5)), url("../image/yam.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.form-container{
-    width: 700px;
-    height: auto;
-    background-color: #b95e31;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 20px;
-    /* box-shadow: 2px 2px 10px #000; */
-}
-.welcome-div{
-    width: 300px;
-    height: inherit;
-    background-color: #007200;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-top-left-radius: 2000px;
-    /* border-bottom-left-radius: 20px; */
-}
-.login-form{
-    height: 100%;
-    width: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
 }
-.login-form form{
-    width: inherit;
-    height: auto;
+.google-auth{
+    width: 400px;
+    padding: 8px;
+    /* height: 30px; */
     text-align: center;
-    /* background-color: #eee; */
+    color: #fff;
+    background-color: #DB5B3F;
+    text-decoration: none;
 }
-.login-form form .form-text{
+form{
+    width: 400px;
+    margin: 20px;
+}
+.form-div{
+    width: inherit;
+}
+.form-div input{
+    width: 100%;
+    margin: 10px 0;
+    padding: 3%;
+    outline: none;
+}
+.form-div span, li{
     display: none;
 }
-.login-form input{
-    width: 80%;
-    height: 40px;
-    border-radius: 20px;
-    border: none;
-    outline: none;
-    background-color: #eee;
-    padding: 10px;
-    margin: 10px 0;
-}
-.login-form button{
-    width: 300px;
-    height: 40px;
-    border: none;
-    border-radius: 20px;
-    background-color: #007200;
-    color: #fff;
-}
-.login-form .auth{
+.t_c{
+    width: auto;
     display: flex;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: space-between;
-    width: 200px;
-    height: 40px;
-}
-.login-form .auth button{
-    width: 150px;
-    height: 40px;
-}
-.auth a{
-    text-decoration: none;
-    color: #eee;
-}
 
-.login-form .auth .google a{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: #eee;
-    color: #555;
-    border-radius: 50%;
 }
-.login-form h2{
-    font-size: 40px;
+.t_c input{
+    width: 20px;
+}
+.t_c small{
+    font-size: 10px;
+}
+.form-btn{
+    width: 100%;
+    padding: 2%;
+    background-color: #DB5B3F;
     color: #fff;
-}
-.title{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
-}
-.title span{
-    width: 30px;
-    height: 8px;
-    background-color: #007200;
-    position: absolute;
-    border-radius: 20px;
-    top: 43px;
-    left: 70px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
 }
 /* =========================shopping cart=============================== */
 
@@ -635,9 +570,14 @@ header h1{
     position: relative;
 }
 .search-bar{
+    width: 250px;
     position: absolute;
-    bottom: 40%;
-    right: 10%;
+    bottom: 30%;
+    right: 15%;
+}
+.search-bar input{
+    padding: 8px;
+    width: 250px;
 }
 .products-grid{
     display: flex;
@@ -646,10 +586,24 @@ header h1{
 }
 .product-card{
     width: 250px;
-    margin: 20px;
+    margin: 5%;
+    text-align: center;
 }
 .product-card img{
     width: inherit;
+    border-top-left-radius:10px ;
+    border-top-right-radius: 10px;
+}
+.addtocart{
+    border: none;
+    width: 100%;
+    padding: 5px 0;
+    background-color: #DB5B3F;
+    color: #fff;
+    margin-top: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
 }
 /* =================================single product page========================================== */
 .product-banner{
@@ -727,23 +681,46 @@ header h1{
 /* =================================shopping cart========================================== */
 .shoppingCart{
     width: screen;
-    padding: 5%;
+    padding: 2%;
+    position: relative;
+}
+.shoppingCart button{
+    position: absolute;
+    cursor: pointer; 
+    right: 12%;
+    bottom: 10px;
+    width: 200px;
+    height: 40px;
+    background-color: #DB5B3F;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    font-weight: 600;
 }
 table{
-    margin: 0 10%;
-    width: 70%;
+    margin: 0 5%;
+    width: 90%;
 }
 th{
     text-align: center;padding:0 5px;margin: 2% 0;
     font-size: 20px;
-    background-color: #b95e31;
+    background-color: #DB5B3F;
     width: 100%;
     color: #fff;
     padding:0 10px;
+    /* border-radius: 10px; */
+}
+tr td{
+    flex-wrap: wrap;
 }
 tr td:first-child{
     display: flex;
     align-items: center;
+    flex-direction: column;
+}
+tr td:first-child a{
+    color: red;
+    font-size: 10px;
 }
 tr{
     width: inherit;
@@ -751,6 +728,7 @@ tr{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 20px;
 }
 td img{
     width: 140px;
@@ -766,6 +744,9 @@ td img{
     }
     .bi-list{
         display: flex;
+    }
+    .products-grid{
+        flex-direction: column;
     }
 }
 @media only screen and (max-width:425px){
