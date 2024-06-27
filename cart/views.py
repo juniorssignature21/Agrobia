@@ -66,12 +66,13 @@
 
 
 # cart/views.py
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Cart, CartItem
 from vendor.models import Product
 
-@login_required
+@login_required(login_url='login')
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     cart, created = Cart.objects.get_or_create(user=request.user)
@@ -80,29 +81,46 @@ def add_to_cart(request, product_id):
     if not created:
         cart_item.quantity += 1
     cart_item.save()
-
+    # context = {
+    #     'cart': cart,
+    #     'created': created,
+    #     'cart_item': cart_item
+    # }
     return redirect('cart_detail')
+    
 
-@login_required
+@login_required(login_url='login')
 def cart_detail(request):
-    cart = Cart.objects.get(user=request.user)
-    cart_items = CartItem.objects.filter(cart=cart)
-    context = {
-        'cart': cart,
-        'cart_items': cart_items
-    }
-    return render(request, 'cart/cart_detail.html', context)
+    try:
+        cart = Cart.objects.get(user=request.user)
+        cart_items = CartItem.objects.filter(cart=cart)
 
-@login_required
+        context = {
+            'cart': cart,
+            'cart_items': cart_items
+        }
+        return render(request, 'cart/cart_detail.html', context)
+    except:
+        return redirect('null-cart')
+
+@login_required(login_url='login')
 def remove_from_cart(request, product_id):
     cart = get_object_or_404(Cart, user=request.user)
     product = get_object_or_404(Product, id=product_id)
     cart_item = get_object_or_404(CartItem, cart=cart, product=product)
     
-    if cart_item.quantity > 1:
+    if cart_item.quantity >= 1:
         cart_item.quantity -= 1
-        cart_item.save()
-    else:
         cart_item.delete()
+        return redirect('cart_detail')
+        
+            
+ 
+        # cart_item.save()
+    # else:
+                    
 
-    return redirect('cart_detail')
+
+@login_required(login_url='login')
+def null_cart(request):
+    return render(request, 'cart/null_cart.html')

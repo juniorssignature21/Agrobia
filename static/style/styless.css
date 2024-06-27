@@ -733,6 +733,28 @@ tr{
 td img{
     width: 140px;
 }
+
+/* =================================null cart=============== */
+.null-shop{
+    width: screen;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.null-shop a{
+    display: block;
+    width: 300px;
+    background-color: #DB5B3F;
+    padding: 5px;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+/* 07068244068 */
 @media only screen and (max-width:768px) {
     /* ==========================Home page responsiveness=========================== */    
      
@@ -799,8 +821,6 @@ td img{
        height: 40px;
    }
 }
-
-
 @media only screen and (max-width:375px){
     /* ==========================Home page responsiveness=========================== */
     .banner-div h3{

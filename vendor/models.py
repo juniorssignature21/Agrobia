@@ -25,7 +25,7 @@ class Product(models.Model):
     stock = models.IntegerField()
     productcategories = models.ForeignKey(ProductCategory, related_name='products', on_delete=models.CASCADE, default='')
     weight = models.CharField(max_length=10, default='')
-    vendor = models.ForeignKey(Farmers , related_name='products', on_delete=models.CASCADE, default='')
+    vendor = models.ForeignKey(Farmers , related_name='farmers', on_delete=models.CASCADE, default='')
     created = models.DateField(auto_now=True)
     
     class Meta:

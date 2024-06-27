@@ -10,6 +10,7 @@
         {% comment %} <a href="About">About</a> {% endcomment %}
         <a href="{% url "shop" %}">Shop</a>
         <a href="categories">Categories</a>
+        <a href="{% url 'check-vendor-status' %}">Sell on Agrobia</a>
     </nav>
     {% comment %} <form action="{% url "shop" %}" method="GET">
         <input name="q" placeholder="Search for more products" />
@@ -33,7 +34,7 @@
     </div>
 
     {% else %}
-    <a href="{% url "cart_summary" %}" class="icon-cart">
+    <a href="{% url "cart_detail" %}" class="icon-cart">
         <img src="{% static "image/cart.png" %}" alt="">
         <span>0</span>
     </a>

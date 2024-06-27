@@ -12,6 +12,6 @@ class VendorForm(ModelForm):
     class Meta:
         model = Farmers
         fields = ['company_name', 'location', 'farm_produce']
-        # exclude = ['farmer']
+        exclude = ['farmer']
         
 

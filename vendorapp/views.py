@@ -9,7 +9,9 @@ def vendorform(request):
     if request.method == 'POST':
         form = VendorForm(request.POST)
         if form.is_valid():
-            form.save()
+            vendor = form.save(commit=False)
+            vendor.farmer = request.user  # Set the farmer field to the logged-in user
+            vendor.save()
             return redirect('products-upload')
     else:
         form = VendorForm()
@@ -44,3 +46,11 @@ def product_pages(request):
         # Handle the case where the farmer does not exist
         products = []
     return render(request, 'vendorapp/products_page.html', {'products': products})
+
+@login_required(login_url='login')
+def check_vendor_status(request):
+    try:
+        Farmers.objects.get(farmer=request.user)
+        return redirect('products-pages')  # Redirect to the product pages view if the user is a vendor
+    except Farmers.DoesNotExist:
+        return redirect('register-vendor')  # Redirect to the vendor registration form if the user is not a vendor

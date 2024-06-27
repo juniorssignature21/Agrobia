@@ -1,29 +1,35 @@
 {% comment %} {% extends "base.html" %} {% endcomment %}
 {% load static %}
-<link rel="stylesheet" href="{% static "style/styless.css" %}">
- <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{% static "style/styless.css" %}">
+   <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      />
+</head>
+<body>
+  {% include "navbar.html" %}
+  {% comment %} {% block content %} {% endcomment %}
+  <div class="product-banner">
+      <h1>
+          Shop List
+      </h1>
+      <div class="route">
+          <a href="">Home</a>&nbsp; /
+          <a href="">Shop</a>&nbsp;/
+          <a href="">Single Product</a>
+      </div>
+  </div>
+  
 
-{% include "navbar.html" %}
-{% block content %}
-<div class="product-banner">
-    <h1>
-        Shop List
-    </h1>
-    <div class="route">
-        <a href="">Home</a>&nbsp; /
-        <a href="">Shop</a>&nbsp;/
-        <a href="">Single Product</a>
-    </div>
-</div>
-
-
-
-    
       <section class="products">
-        {% comment %} <div class="filter">
+        {% comment %}
+        <div class="filter">
           <h2>Categories</h2>
           <ul>
             <li><a href="{% url "categories" "fertilizers" %}">Fruits</a></li>
@@ -35,7 +41,8 @@
           <select name="" id="">
             
           </select>
-        </div> {% endcomment %}
+        </div>
+        {% endcomment %}
 
         <div class="product-list">
           <div class="search-bar">
@@ -49,84 +56,23 @@
              {% for product in products %}
              <div class="product-card">
                <img src="{{product.image.url}}" alt="Apple" />
-               <h3>{{product.name}}</h3>
+              
+              <h3>{{product.name}}</h3>
                <small>
                 {{product.categories}}
               </small>
               <span class="stars" style="color: yellow">★★★★★</span>
                <p>#{{product.price}}</p>
+               {% comment %} <a href="{% url "product" product.id %}">
+                view product
+               </a> {% endcomment %}
                <a href="{% url 'add_to_cart' product.id %}">
                  <button type="button" class="addtocart" value="{{product.id}}" id="add-cart">Add to cart</button>
                 </a>
 
              </div>
              {% endfor %}
-            {% comment %} <div class="product-card">
-              <img src="{% static "image/watermelon.png" %}" alt="Water Melon" />
-              <h3>Water Melon</h3>
-              <div class="stars" style="color: yellow">★★★★★</div>
-              <p>$14.00</p>
-            </div>
-            <div class="product-card">
-              <img src="{% static "image/banana.png" %}" alt="Banana" />
-              <h3>Banana</h3>
-              <div class="stars" style="color: yellow">★★★★★</div>
-              <p>$14.00</p>
-            </div>
-            <div class="product-card">
-              <img src="{% static "image/peaches.png" %}" alt="Peaches" />
-              <h3>Peaches</h3>
-              <div class="stars" style="color: yellow">★★★★★</div>
-              <p>$14.00</p>
-            </div>
-            <div class="product-card">
-              <img src="{% static "image/pineapple.png" %}" alt="Pineapple" />
-              <h3>Pineapple</h3>
-              <div class="stars" style="color: yellow">★★★★★</div>
-              <p>$14.00</p>
-            </div>
-            <div class="product-card">
-              <img src="{% static "image/blueberries.png" %}" alt="Blueberries" />
-              <h3>Blueberries</h3>
-              <div class="stars" style="color: yellow">★★★★★</div>
-              <p>$14.00</p>
-            </div>
-            <div class="product-card">
-              <img src="{% static "image/pumpkin leaf.jpeg" %}" alt="Pumpkin Leaf" />
-              <h3>Pumpkin Leaf</h3>
-              <div class="stars" style="color: yellow">★★★★★</div>
-              <p>$14.00</p>
-            </div>
-            <div class="product-card">
-              <img src="{% static "image/cucumber.png" %}" alt="Cucumber" />
-              <h3>Cucumber</h3>
-              <div class="stars" style="color: yellow">★★★★★</div>
-              <p>$14.00</p>
-            </div>
-            <div class="product-card">
-              <img src="{% static "image/pumpkin.png" %}" alt="Pumpkin" />
-              <h3>Pumpkin</h3>
-              <div class="stars" style="color: yellow">★★★★★</div>
-              <p>$14.00</p>
-            </div>
-            <div class="product-card">
-              <img src="{% static "image/corn.png" %}" alt="Corn" />
-              <h3>Corn</h3>
-              <div class="stars" style="color: yellow">★★★★★</div>
-              <p>$14.00</p>
-            </div>
-            <div class="product-card">
-              <img src="{% static "image/ricebag.png" %}" alt="Rice" />
-              <h3>Rice</h3>
-              <div class="stars" style="color: yellow">★★★★★</div>
-              <p>$14.00</p>
-            </div>
-            <div class="product-card">
-              <img src="{% static "image/beef.png" %}" alt="Beaf" />
-              <h3>Beaf</h3>
-              <div class="stars" style="color: yellow">★★★★★</div>
-              <p>$14.00</p>
-            </div> {% endcomment %}
+            
           </div>
           <div class="pagination">
             <a href="#">&lt;</a>
@@ -168,4 +114,6 @@
     
     </script> {% endcomment %}
 {% include "footer.html" %}
-{% endblock %}
+</body>
+</html>
+{% comment %} {% endblock %} {% endcomment %}
