@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 # import dj_database_url
-import django_heroku
+# import django_heroku
 import os
 from pathlib import Path
 
@@ -30,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['Agrobia.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
 # Application definition
 
