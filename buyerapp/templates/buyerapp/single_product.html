@@ -1,11 +1,21 @@
 {% load static %}
-<link rel="stylesheet" href="{% static "styles/style.css" %}">
-{% include "navbar.html" %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static "style/styless.css" %}">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600">
+
+</head>
 <style type="text/css">
     body { font-family: 'open sans'; }
 </style>
+<body>
+    
+
+{% include "navbar.html" %}
 <div class="product-banner">
     <h1>
         Single Products
@@ -50,6 +60,8 @@
         </b>
         <br>
         <br>
+        {% comment %} {% if not item %} {% endcomment %}
+
         <div class="addtocart-btn">
             <div class="btn-col">
                 <span>1</span>
@@ -63,6 +75,13 @@
                 </span>
             </div>
         </div>
+        {% comment %} {% else %} {% endcomment %}
+        {% comment %} <a href="{% url 'add_to_cart' product.id %}">
+            <button type="button" class="addtocart" value="{{product.id}}" id="add-cart">Add to cart</button>
+           </a> {% endcomment %}
+        {% comment %} {% endif %} {% endcomment %}
+        <br>
+        <br>
         <hr>
         <div class="socials">
             <b>
@@ -116,5 +135,5 @@
                 <img src="{{product.imagesample2.url}}"  class="SmallImg">
             </div>
         </div> {% endcomment %}
-
-{% endblock content %}
+    </body>
+    </html>

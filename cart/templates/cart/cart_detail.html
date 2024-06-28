@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static "style/styless.css" %}">
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div class="product-banner">
+        <h1>
+            Shopping Cart
+        </h1>
+        <div class="route">
+            <a href="">Home</a>&nbsp; /
+            <a href="">Shop</a>&nbsp;/
+            <a href="">Single Product</a>
+        </div>
+    </div>
+    <section class='shoppingCart'>
+        <table>
+        
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            
+            {% for item in cart_items %}
+                
+            <tr>
+                <td>
+    
+                    <a href="{% url "product" item.product.id %}">
+                        <img src={{item.product.image.url}} alt="">
+                    </a>
+                    <b>{{item.product.name}}</b>
+                <a href="{% url 'remove_from_cart' item.product.id %}">Remove</a>
+    
+                </td>
+                <td>
+                    N{{item.product.price}}
+                </td>
+                <td>
+                           <div class="addtocart-btn">
+                <div class="btn-col">
+                    <span>1</span>
+                </div>
+                <div class="btn-col2">
+                    <span>
+                        <b>-</b>
+                    </span>
+                    <span>
+                        <b>+</b>
+                    </span>
+                </div>
+            </div>
+                </td>
+                <td>
+                    N400
+                </td>
+            </tr>
+            <br>
+    
+            
+            {% endfor %}
+            
+        
+        </table>
+        <br>
+        <br>
+        <br>
+        <a href="">
+            <button>
+                Proceed to check out
+            </button>
+        </a>
+    </section>
+    
+
+    {% include "footer.html" %}    
+</body>
+</html>
+
+{% comment %} {% block content %} {% endcomment %}
+
+{% comment %} {% endblock content %} {% endcomment %}
+{% comment %} 09160695230 {% endcomment %}

@@ -1,5 +1,5 @@
 from rest_framework import generics
-from .models import Order, Cart, CartItem
+from .models import Order, Cart, CartItem, MyInfo
 from .serializers import OrderSerializer, CartSerializer, CartItemSerializer
 from rest_framework import generics, status
 from rest_framework.response import Response
@@ -9,7 +9,7 @@ from .serializers import BuyerSignupSerializer, BuyerLoginSerializer
 from django.contrib.auth import authenticate
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from vendor.models import Product
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Order
 
 class CartDetailView(generics.RetrieveAPIView):
@@ -70,3 +70,4 @@ class OrderListCreate(generics.ListCreateAPIView):
 class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+       

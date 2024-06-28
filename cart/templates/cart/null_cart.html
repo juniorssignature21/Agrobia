@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static "style/styless.css" %}">
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div class="product-banner">
+        <h1>
+            Shopping Cart
+        </h1>
+        <div class="route">
+            <a href="">Home</a>&nbsp; /
+            <a href="">Shop</a>&nbsp;/
+            <a href="">Single Product</a>
+        </div>
+    </div>
+    <div class="null-shop">
+        <h1>
+            You have not added any item to cart!!!
+        </h1>
+        <a href="{% url "shop" %}">
+            Continue Shopping
+        </a>
+    </div>
+    {% comment %} {% include "footer.html" %} {% endcomment %}
+</body>
+</html>

@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-import dj_database_url
+# import dj_database_url
+# import django_heroku
 import os
 from pathlib import Path
 
@@ -26,8 +27,10 @@ SECRET_KEY = 'django-insecure-$=!s&92&!qm50rf5ddai4mmy@u3(02&pbekfjp=66i@yolhxl3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['Agrobia.herokuapp.com', 'localhost', '127.0.0.1']
 
+# Activate Django-Heroku.
+# django_heroku.settings(locals())
 
 # Application definition
 
@@ -39,6 +42,7 @@ INSTALLED_APPS = [
     'buyerapp',
     'buyer',
     'store',
+    'cart',
     'categories',
     'django.contrib.admin',
     'django.contrib.auth',
