@@ -26,6 +26,20 @@
       </div>
   </div>
   
+<link rel="stylesheet" href="{% static "styles/style.css" %}">
+
+{% include "navbar.html" %}
+{% block content %}
+<div class="product-banner">
+    <h1>
+        Shop List
+    </h1>
+    <div class="route">
+        <a href="">Home</a>&nbsp; /
+        <a href="">Shop</a>&nbsp;/
+        <a href="">Single Product</a>
+    </div>
+</div>
 
       <section class="products">
         {% comment %}
