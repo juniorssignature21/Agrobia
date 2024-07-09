@@ -3,6 +3,6 @@ from django.urls import path
 from store.api.views import RegisterUserView, LoginView
 
 urlpatterns = [
-    path('register/', RegisterUserView.as_view(), name='register'),
-    path('login/', LoginView.as_view(), name='login'),
+    path('api-register/', RegisterUserView.as_view(), name='api-register'),
+    path('api-login/', LoginView.as_view(), name='api-login'),
 ]

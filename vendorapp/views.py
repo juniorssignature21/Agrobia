@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import ProductForm, VendorForm
 from vendor.models import Product, Farmers
+from categories.models import ProductCategory
 
 @login_required(login_url='login')
 def vendorform(request):
@@ -20,6 +21,7 @@ def vendorform(request):
  
 @login_required(login_url='login')
 def productsupload(request):
+    # prod_cart = ProductCategory.objects.all()
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -34,18 +36,22 @@ def productsupload(request):
                 return redirect('vendorform')
     else:
         form = ProductForm()
-    context = {'form': form}
+    context = {'form': form, 
+            #    'prod_cart': prod_cart
+               }
     return render(request, 'vendorapp/index.html', context)
+
 
 @login_required(login_url='login')
 def product_pages(request):
+    farmer = Farmers.objects.all()
     try:
         farmer = Farmers.objects.filter(farmer=request.user).first()
         products = Product.objects.filter(vendor=farmer)
     except Farmers.DoesNotExist:
         # Handle the case where the farmer does not exist
         products = []
-    return render(request, 'vendorapp/products_page.html', {'products': products})
+    return render(request, 'vendorapp/products_page.html', {'products': products, 'vendors': farmer})
 
 @login_required(login_url='login')
 def check_vendor_status(request):
@@ -53,4 +59,4 @@ def check_vendor_status(request):
         Farmers.objects.get(farmer=request.user)
         return redirect('products-pages')  # Redirect to the product pages view if the user is a vendor
     except Farmers.DoesNotExist:
-        return redirect('register-vendor')  # Redirect to the vendor registration form if the user is not a vendor
+        return redirect('vendor-form')  # Redirect to the vendor registration form if the user is not a vendor

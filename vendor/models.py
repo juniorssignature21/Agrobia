@@ -4,11 +4,14 @@ from categories.models import ProductCategory
 
 
 
-
+ 
 class Farmers(models.Model):
-    company_name = models.CharField(max_length=255)
-    location = models.CharField(max_length=255)
+    business_name = models.CharField(max_length=255)
     farm_produce = models.CharField(max_length=255)
+    phone = models.CharField(max_length=20, default='')
+    email = models.EmailField(default='')
+    store_description = models.TextField(default='')
+    location = models.CharField(max_length=255)
     farmer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='farmers', default='')
     
     def __str__(self):

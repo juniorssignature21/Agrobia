@@ -307,7 +307,7 @@
     flex-wrap: wrap;
 }
 .product-div{
-    width: 350px;
+    width: 300px;
     padding: 20px;
     text-align: center;
     background-color: #eee;
@@ -482,6 +482,38 @@ form{
     font-size: 15px;
     cursor: pointer;
 }
+/* =========================login page=============================== */
+.login-form{
+    width: screen;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column; */
+}
+.login-form form{
+    width: 400px;
+}
+.google-auth.login{
+    width: 400px;
+    padding: 8px;
+    /* height: 30px; */
+    text-align: center;
+    color: #fff;
+    background-color: #DB5B3F;
+}
+.google-auth.login a{
+    text-decoration: none;
+    color: #fff;
+}
+.login-form .title h3{
+    color: #DB5B3F;
+
+}
+.login-form .title h3::after{
+    background: linear-gradient(#DB5B3F, #fff);
+
+}
 /* =========================shopping cart=============================== */
 
 .topnav{
@@ -608,11 +640,14 @@ header h1{
 /* =================================single product page========================================== */
 .product-banner{
     width: screen;
-    height: 50vh;
+    height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     background: url("../image/banner4.png");
     color: #fff;
 }
@@ -753,6 +788,158 @@ td img{
     text-decoration: none;
     margin-top: 30px;
     border-radius: 10px;
+}
+/* =====================================products upload page============================================ */
+/* .login-form.pro{
+    width: screen;
+    background: url(../image/chicken.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+} */
+.product-form{
+    height: 100%;
+    
+}
+.product-form label{
+    display: block;
+}
+.product-form input, textarea{
+    color: transparent;
+    width: 400px;
+    margin: 20px;
+    outline: none;
+
+}
+.select{
+    width: 300px;
+    text-align: center;
+    margin: 0 20%;
+    outline: none;
+}
+
+.product-form input::-webkit-file-upload-button{
+    display: none;
+}
+.product-form .image-field input{
+    background-color: #007200;
+}
+
+/* =====================================vendor form page============================================ */
+
+.vendor-div{
+    width: 400px;
+    height: 400px;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+    /* gap: 20px; */
+}
+.vendor-div::-webkit-scrollbar{
+    width: 10px;
+}
+.vendor-div::-webkit-scrollbar-thumb{
+    border-radius: 20px;
+    background-color: #DB5B3F;
+ }
+.vendor-div form{
+    width: 350px;
+}
+.vendor-div label{
+    display: block;
+}
+.vendor-div form input{
+    padding: 8%;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #b4b4b4;
+    border-top: 1px solid #b4b4b4;
+    color: #000;
+}
+.vendor-div form textarea{
+    color: #000;
+    border: none;
+    border-bottom: 1px solid #b4b4b4;
+    border-top: 1px solid #b4b4b4;
+    width: 100%;
+    margin: 10px;
+    resize: none;
+}
+.vendor-div .form-div{
+    width: 350px;
+}
+
+.scroll{
+    /* bottom: 25%; */
+    /* right: 15%; */
+    display: flex;
+    width: 200px;
+    /* padding: 20px; */
+    height: 40px;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: #DB5B3F;
+}
+.scroll a{
+    text-decoration: none;
+    font-size: 13px;
+    color: #eee;
+}
+/* ==========================vendor product page=========================== */
+#vendor-products{
+    display: flex;
+    width: screen;
+    height: 100vh;
+    overflow-x: hidden;
+}
+.activity{
+    width: 30vw;
+    background-color: #eee;
+}
+.product-container{
+    height: 100vh;
+    overflow-y: scroll;
+    height: auto;
+    width: 70vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* background-color: #DB5B3F; */
+}
+.prod_div{
+    width: 500px;
+    /* padding: 5%; */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    /* border: 1px solid #DB5B3F; */
+    background-color: #eee;
+}
+.vendor-info{
+    width: 60vw;
+    text-align: center;
+}
+.vendor-info img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #DB5B3F;
+}
+.product_desc a{
+    text-decoration: none;
+    color: #DB5B3F;
+    font-weight: 600;
+    font-size: 20px;
 }
 /* 07068244068 */
 @media only screen and (max-width:768px) {

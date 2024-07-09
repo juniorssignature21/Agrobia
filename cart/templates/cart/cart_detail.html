@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static "style/styless.css" %}">
+    <link rel="stylesheet" href="{% static "styles/style.css" %}">
 </head>
 <body>
     {% include "navbar.html" %}
@@ -79,7 +79,26 @@
     </section>
     
 
-    {% include "footer.html" %}    
+    {% include "footer.html" %}
+    <script>
+        const images = [
+        '{% static "image/banner3.png" %}',
+        '{% static "image/banner.png" %}', // Replace with actual paths to your images
+        //'image/third.jpg'
+    ];
+    
+    let currentImageIndex = 0;
+    
+    function changeBackgroundImage() {
+        const header = document.querySelector('.product-banner');
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        header.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url('${images[currentImageIndex]}')`;
+    }
+    
+    setInterval(changeBackgroundImage, 3000); // Change image every 3 seconds
+    
+        
+</script>
 </body>
 </html>
 

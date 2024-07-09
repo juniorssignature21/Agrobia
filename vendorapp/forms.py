@@ -7,11 +7,12 @@ class ProductForm(ModelForm):
         model = Product
         fields = '__all__'
         exclude = ['vendor']
+        
 
 class VendorForm(ModelForm):
     class Meta:
         model = Farmers
-        fields = ['company_name', 'location', 'farm_produce']
+        fields = '__all__'
         exclude = ['farmer']
         
 
