@@ -1,14 +1,7 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static "styles/style.css" %}">
-</head>
-<body>
-    {% include "navbar.html" %}
+{% block content %}
+
     <div class="product-banner">
         <h1>
             Shopping Cart
@@ -43,22 +36,43 @@
                     N{{item.product.price}}
                 </td>
                 <td>
-                           <div class="addtocart-btn">
+            <!--div class="addtocart-btn">
                 <div class="btn-col">
-                    <span>1</span>
+                    {% comment %} <span>1</span> {% endcomment %}
+                    <span>{{ item.quantity }}</span>
                 </div>
                 <div class="btn-col2">
+                    {% comment %} <span>
+                        <b>-</b>
+                    </span> {% endcomment %}
+                    <a  href="{% url "decrease_cart_quantity" item.product.id %}">
+                        <b>-</b>
+                    </a>
+                    {% comment %} <span>
+                        <b>+</b>
+                    </span> {% endcomment %}
+                    <a href="{% url "increase_cart_quantity" item.product.id %}">
+                        +
+                    </a>
+                </div>
+            </div--> 
+            <div class="quantity">
+                <a  href="{% url "decrease_cart_quantity" item.product.id %}">
                     <span>
                         <b>-</b>
                     </span>
-                    <span>
-                        <b>+</b>
-                    </span>
-                </div>
-            </div>
+                </a>
+                <span>{{item.quantity}}</span>
+                <a href="{% url "increase_cart_quantity" item.product.id %}">
+                   <span>
+                   +
+                   </span>
+                </a>
+              </div>
                 </td>
                 <td>
-                    N400
+                    {% comment %} N{{ item.product.price|multiply:item.quantity }} {% endcomment %}
+                    N{{item.product.price}}
                 </td>
             </tr>
             <br>
@@ -72,7 +86,7 @@
         <br>
         <br>
         <a href="">
-            <button>
+            <button class="proceed-btn">
                 Proceed to check out
             </button>
         </a>
@@ -99,10 +113,102 @@
     
         
 </script>
-</body>
-</html>
+{% endblock content %}
 
 {% comment %} {% block content %} {% endcomment %}
 
 {% comment %} {% endblock content %} {% endcomment %}
 {% comment %} 09160695230 {% endcomment %}
+
+
+
+{% comment %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static "styles/styles.css" %}">
+    <script src="https://unpkg.com/htmx.org@1.5.0"></script>
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div class="product-banner">
+        <h1>
+            Shopping Cart
+        </h1>
+        <div class="route">
+            <a href="">Home</a>&nbsp; /
+            <a href="">Shop</a>&nbsp;/
+            <a href="">Single Product</a>
+        </div>
+    </div>
+    <section class='shoppingCart'>
+        <table>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            {% for item in cart_items %}
+            <tr>
+                <td>
+                    <a href="{% url "product" item.product.id %}">
+                        <img src={{item.product.image.url}} alt="">
+                    </a>
+                    <b>{{item.product.name}}</b>
+                    <a href="{% url 'remove_from_cart' item.product.id %}">Remove</a>
+                </td>
+                <td>
+                    N{{item.product.price}}
+                </td>
+                <td>
+                    <div class="addtocart-btn">
+                        <div class="btn-col">
+                            <span>{{ item.quantity }}</span>
+                        </div>
+                        <div class="btn-col2">
+                            <button hx-post="{% url 'update_cart_quantity' item.product.id 'decrease' %}" hx-swap="outerHTML">
+                                <b>-</b>
+                            </button>
+                            <button hx-post="{% url 'update_cart_quantity' item.product.id 'increase' %}" hx-swap="outerHTML">
+                                <b>+</b>
+                            </button>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    N{{ item.product.price|multiply:item.quantity }}
+                </td>
+            </tr>
+            <br>
+            {% endfor %}
+        </table>
+        <br>
+        <br>
+        <br>
+        <a href="">
+            <button>
+                Proceed to check out
+            </button>
+        </a>
+    </section>
+    {% include "footer.html" %}
+    <script>
+        const images = [
+            '{% static "image/banner3.png" %}',
+            '{% static "image/banner.png" %}', // Replace with actual paths to your images
+        ];
+    
+        let currentImageIndex = 0;
+    
+        function changeBackgroundImage() {
+            const header = document.querySelector('.product-banner');
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            header.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url('${images[currentImageIndex]}')`;
+        }
+    
+        setInterval(changeBackgroundImage, 3000); // Change image every 3 seconds
+    </script>
+</body>
+</html> {% endcomment %}

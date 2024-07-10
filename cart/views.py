@@ -118,9 +118,46 @@ def remove_from_cart(request, product_id):
  
         # cart_item.save()
     # else:
-                    
+
+def decrease_cart_quantity(request, product_id):
+    cart = get_object_or_404(Cart, user=request.user)
+    product = get_object_or_404(Product, id=product_id)
+    cart_item = get_object_or_404(CartItem, cart=cart, product=product)
+    
+    if cart_item.quantity > 0:
+        cart_item.quantity -= 1
+        if cart_item.quantity == 0:
+            cart_item.delete()
+        else:
+            cart_item.save()
+    return redirect('cart_detail')
+
+def increase_cart_quantity(request, product_id):
+    cart = get_object_or_404(Cart, user=request.user)
+    product = get_object_or_404(Product, id=product_id)
+    cart_item = get_object_or_404(CartItem, cart=cart, product=product)
+    
+    cart_item.quantity += 1
+    cart_item.save()
+    return redirect('cart_detail')
+    
 
 
 @login_required(login_url='login')
 def null_cart(request):
     return render(request, 'cart/null_cart.html')
+
+
+@login_required(login_url='login')
+def update_cart_quantity(request, product_id, action):
+    product = get_object_or_404(Product, id=product_id)
+    cart_item, created = CartItem.objects.get_or_create(product=product
+                                                        , user=request.user)
+
+    if action == 'increase':
+        cart_item.quantity += 1
+    elif action == 'decrease' and cart_item.quantity > 1:
+        cart_item.quantity -= 1
+    cart_item.save()
+
+    return HttpResponse(('cart_item_partial.html', {'item': cart_item}))

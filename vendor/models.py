@@ -15,7 +15,7 @@ class Farmers(models.Model):
     farmer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='farmers', default='')
     
     def __str__(self):
-        return self.company_name
+        return self.business_name
 
 
 class Product(models.Model):

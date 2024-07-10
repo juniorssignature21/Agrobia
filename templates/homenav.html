@@ -1,5 +1,5 @@
 {% load static %}
-<link rel="stylesheet" href="{% static "style/styless.css" %}">
+<link rel="stylesheet" href="{% static "styles/index.css" %}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 {% comment %} <link rel="stylesheet" href="{% static "styles/home.css" %}"> {% endcomment %}
 <div class="homenav">
@@ -42,11 +42,12 @@
         <a href="{% url "logout" %}">
             <i class="bi bi-person user"></i>
         </a>
+        {% comment %} 
         <b>
             Hello,
-            {% comment %} <br> {% endcomment %}
             {{user.username}}!
         </b>
+        <br> {% endcomment %}
     </div>
 
     {% else %}

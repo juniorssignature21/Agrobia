@@ -26,11 +26,13 @@
         <a href="{% url "user-profile" %}">
             <i class="bi bi-person user"></i>
         </a>
+        {% comment %}
         <b>
             Hello,
-            {% comment %} <br> {% endcomment %}
-            {{user.username}}!
-        </b>
+             <br>
+             {{user.username}}!
+            </b>
+            {% endcomment %}
     </div>
 
     {% else %}

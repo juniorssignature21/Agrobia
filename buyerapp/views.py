@@ -2,6 +2,7 @@ from buyer.models import Order, Product
 from vendor.models import Farmers
 from categories.models import ProductCategory
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from django.db.models import Q
 
 
