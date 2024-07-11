@@ -35,14 +35,15 @@
               {% csrf_token %}
               <div class="search">
                 <input name="q" placeholder="search products">
-              <button type="submit">🔍</button>
+                <button type="submit"><b>Search</b></button>
               </div>
             </form>
           </div>
           <div class="products-grid">
             <!-- Product cards -->
-             {% if products %}
-             {% for product in products %}
+            {% if products %}
+            {% for product in products %}
+            <a href="{% url 'product' product.id %}">
              <div class="product-card">
                <img src="{{product.image.url}}" alt="Apple" />
               
@@ -55,11 +56,11 @@
                {% comment %} <a href="{% url "product" product.id %}">
                 view product
                </a> {% endcomment %}
-               <a href="{% url 'add_to_cart' product.id %}">
-                 <button type="button" class="addtocart" value="{{product.id}}" id="add-cart">Add to cart</button>
-                </a>
-
-             </div>
+                
+                 {% comment %} <button type="button" class="addtocart" value="{{product.id}}" id="add-cart">Add to cart</button> {% endcomment %}
+                 
+                </div>
+              </a>
              {% endfor %}
             
           </div>

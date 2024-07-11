@@ -87,7 +87,11 @@
             <div class="category-div">
                 <img src="{{category.image.url}}" alt="">
                 <p>
-                    {{category.description}}
+                    <b>
+                        {{category.name|capfirst}}
+                    </b>
+                    <br>
+                    {{category.description|slice:50}}...
                 </p>
             </div>
             {% endfor %}

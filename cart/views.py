@@ -86,7 +86,7 @@ def add_to_cart(request, product_id):
     #     'created': created,
     #     'cart_item': cart_item
     # }
-    return redirect('cart_detail')
+    return redirect(to='cart_detail')
     
 
 @login_required(login_url='login')
@@ -138,6 +138,9 @@ def increase_cart_quantity(request, product_id):
     cart_item = get_object_or_404(CartItem, cart=cart, product=product)
     
     cart_item.quantity += 1
+    if cart_item.quantity > product.stock:
+        cart_item.quantity -= 1
+        # return redirect('/')
     cart_item.save()
     return redirect('cart_detail')
     
@@ -161,3 +164,4 @@ def update_cart_quantity(request, product_id, action):
     cart_item.save()
 
     return HttpResponse(('cart_item_partial.html', {'item': cart_item}))
+

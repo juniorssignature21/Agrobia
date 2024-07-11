@@ -1,4 +1,5 @@
 from buyer.models import Order, Product
+from cart.models import Cart, CartItem
 from vendor.models import Farmers
 from categories.models import ProductCategory
 from django.shortcuts import render, redirect
@@ -18,7 +19,14 @@ def products_page(request):
     return render(request, 'buyerapp/products.html', context)
 
 def single_product(request, pk):
+    cart = Cart.objects.get(user=request.user)
+    cart_items = CartItem.objects.filter(cart=cart)
+
     product = Product.objects.get(id=pk)
-    context = {'product': product}
+    context = {
+            'cart': cart,
+            'cart_items': cart_items,
+            'product': product,
+        }
     return render(request, 'buyerapp/single_product.html', context)
 

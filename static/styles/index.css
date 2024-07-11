@@ -256,12 +256,14 @@
     background-color: #eee;
     border-radius: 20px;
     width: 350px;
+    /* text-align: center; */
     /* color: #007200; */
 }
 .category-div img{
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     width: inherit;
+    height: 300px;
 }
 .category-div p{
     font-size: 15px;
@@ -625,6 +627,8 @@ header h1{
     border-top: 2px solid #DB5B3F;
     border-right: 2px solid #DB5B3F;
     cursor: pointer;
+    background-color: #DB5B3F;
+    color: #fff;
 }
 .search-bar input{
     border-bottom-left-radius: 20px;
@@ -638,6 +642,10 @@ header h1{
     display: flex;
     flex-wrap: wrap;
     width: 90vw;
+}
+.products-grid a{
+    text-decoration: none;
+    color: #000;
 }
 .product-card{
     width: 250px;
@@ -663,7 +671,7 @@ header h1{
 /* =================================single product page========================================== */
 .product-banner{
     width: screen;
-    height: 60vh;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -675,7 +683,7 @@ header h1{
     color: #fff;
 }
 .product-banner h1{
-    font-size: 80px;
+    font-size: 6vw;
 }
 .product-banner a{
     text-decoration: none;
@@ -799,11 +807,11 @@ td img{
     width: 100px;
 }
 td a{
-    color: #ff4500;
+    color: #DB5B3F;
     font-size: 12px;
     text-decoration: none;
 }
- td .quantity{
+td .quantity{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -816,9 +824,9 @@ td .quantity a span{
     justify-content: center;
     width: 25px;
     height: 25px;
-    background-color: #ff4500;
+    background-color: #DB5B3F;
     color: #fff;
-    border-radius: 50%;
+    border-radius: 10px;
     cursor: pointer;
     font-weight: 600;
 }
@@ -1023,6 +1031,34 @@ td .quantity span:nth-child(2){
     .products-grid{
         flex-direction: column;
     }
+    
+    table th:nth-child(2){
+        display: none;
+    }
+    tr td:nth-child(2){
+        display: none;
+    }
+    td .quantity{
+        width: 15vw;
+
+    }
+    .row{
+        flex-direction: column;
+        /* width: 90vw; */
+    }
+    .col{
+        width: 100%;
+        text-align: center;
+    }
+    .col-2{
+        width: 95%;
+        text-align: center;
+    }
+    .addtocart-btn{
+        /* text-align: center; */
+        justify-content: center;
+        width: 85%;
+    }
 }
 @media only screen and (max-width:425px){
     /* ==========================Home page responsiveness=========================== */    
@@ -1125,5 +1161,12 @@ td .quantity span:nth-child(2){
     
     .category-div{
         width: 250px;
+    }
+    td .quantity{
+        width: 30vw;
+        flex-direction: column;
+        align-items: center;
+        /* margin: 0 10px; */
+
     }
 }

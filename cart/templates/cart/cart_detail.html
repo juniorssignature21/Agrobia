@@ -7,7 +7,7 @@
             Shopping Cart
         </h1>
         <div class="route">
-            <a href="">Home</a>&nbsp; /
+            <a href="{% url "home" %}">Home</a>&nbsp; /
             <a href="">Shop</a>&nbsp;/
             <a href="">Single Product</a>
         </div>
@@ -30,6 +30,7 @@
                     </a>
                     <b>{{item.product.name}}</b>
                 <a href="{% url 'remove_from_cart' item.product.id %}">Remove</a>
+                <small>Stock: {{item.product.stock}}</small>
     
                 </td>
                 <td>
@@ -72,7 +73,7 @@
                 </td>
                 <td>
                     {% comment %} N{{ item.product.price|multiply:item.quantity }} {% endcomment %}
-                    N{{item.product.price}}
+                    N{{item.cart_price}}
                 </td>
             </tr>
             <br>
