@@ -7,7 +7,7 @@
         Single Products
     </h1>
     <div class="route">
-        <a href="">Home</a>&nbsp; /
+        <a href="{% url "home" %}">Home</a>&nbsp; /
         <a href="">Shop</a>&nbsp;/
         <a href="">Single Product</a>
     </div>
@@ -42,16 +42,16 @@
         <br>
         <br>
         <b>
-            Weight: {{product.weight}}
+            Weight: {{product.weight}} kg
         </b>
         <br>
         <br>
-        {% comment %} {% if not item %} {% endcomment %}
+        {%  comment %} {% if not item %} {% endcomment %}
+        {% comment %} {% if cart_items %} {% endcomment %}
         {% if cart_items %}
-        {% for items in cart_items %}
         <div class="addtocart-btn">
             <div class="btn-col">
-                <span>{{items.quantity}}</span>
+                <span>{{cart_items.quantity}}</span>
             </div>
             <div class="btn-col2">
                 <a  href="{% url "decrease_cart_quantity" product.id %}">
@@ -59,21 +59,21 @@
                         <b>-</b>
                     </span>
                 </a>
-
+                
                 <a  href="{% url "increase_cart_quantity" product.id %}">
-                <span>
-                    <b>+</b>
+                    <span>
+                        <b>+</b>
                 </span>
-                </a>
-
-            </div>
+            </a>
+            
         </div>
-        {% endfor %}
-        {% else %}
-        <a href="{% url 'add_to_cart' product.id %}">
-            <button type="button" class="addtocart" value="{{product.id}}" id="add-cart">Add to cart</button>
-           </a>
-        {% endif %}
+    </div>
+    {% comment %} {% endfor %} {% endcomment %}
+    {% comment %} {% else %} {% endcomment %}
+    <a href="{% url 'add_to_cart' product.id %}">
+        <button type="button" class="addtocart" value="{{product.id}}" id="add-cart">Add to cart</button>
+    </a>
+    {% endif %}
 
 
         {% comment %} {% else %} {% endcomment %}

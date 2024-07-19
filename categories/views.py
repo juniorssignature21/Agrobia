@@ -15,3 +15,4 @@ class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = ProductCategory.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [IsAuthenticated]
+    

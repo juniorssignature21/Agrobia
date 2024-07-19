@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <section id='vendor-products'>
+        <div class="activity">
+
+        </div>
+        <div class='product-container'>
+            <div class="product_overflow">
+                <div class="vendor-info">
+                    <img src="{% static "image/buy-1.jpg" %}" alt="">
+                    <h4>Business Name: <br>{{vendors.business_name|capfirst}}</h4>
+                    <hr>
+                    <p>
+                        {{vendors.store_description}}
+                    </p>
+                </div>
+                <br><br>
+                {% if products %}
+                        {% for product in products %}
+                            <div class='prod_div'>
+                                <img src="{{ product.image.url }}" alt="" style="width: 100px; height: 100px;">
+                                <div class="product_desc">
+                                    <a href="{% url "product" product.id %}">
+                                        <p>
+                                            Name: {{product.name}}
+                                        </p>
+                                    </a>
+                                {% comment %} <p>Price: {{ product.price }}</p> {% endcomment %}
+                                {% comment %} <p>Stock: {{ product.stock }}</p> {% endcomment %}
+                                <p>{{ product.description }}</p>
+                                </div>
+                            </div>
+                            <br>
+                        {% endfor %}
+                        {% else %}
+                        <center>
+                            <p>No products found. </p>
+                            <br>
+                            <a href="{% url 'products-upload' %}" style="display: inline-block; width=:300px; padding: 10px; background-color: #DB5B3F; margin: 20px; text-decoration: none; color: #fff;">Upload a product</a>
+                            
+                        </center>
+                        {% endif %}
+            </div>
+        </div>
+            </section>
+    
+{% endblock content %}
+

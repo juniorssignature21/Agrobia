@@ -9,8 +9,14 @@
         <div class="route">
             <a href="{% url "home" %}">Home</a>&nbsp; /
             <a href="">Shop</a>&nbsp;/
-            <a href="">Single Product</a>
+            <a href="">Product</a>&nbsp;/
+            <a href="">Cart</a>
         </div>
+    </div>
+    <div style="width: screen; text-align: center; margin-top: 20px;">
+        <h3>
+            {{cart_items|length}} Items added to cart
+        </h3>
     </div>
     <section class='shoppingCart'>
         <table>

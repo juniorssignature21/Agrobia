@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from .forms import ProductForm, VendorForm
 from vendor.models import Product, Farmers
 from categories.models import ProductCategory
+from cart.models import *
+from django.contrib import messages
 
 @login_required(login_url='login')
 def vendorform(request):
@@ -44,6 +46,8 @@ def productsupload(request):
 
 @login_required(login_url='login')
 def product_pages(request):
+    cart = Cart.objects.get(user=request.user)
+    cart_items = CartItem.objects.filter(cart=cart)
     farmer = Farmers.objects.all()
     try:
         farmer = Farmers.objects.filter(farmer=request.user).first()
@@ -51,7 +55,7 @@ def product_pages(request):
     except Farmers.DoesNotExist:
         # Handle the case where the farmer does not exist
         products = []
-    return render(request, 'vendorapp/products_page.html', {'products': products, 'vendors': farmer})
+    return render(request, 'vendorapp/products_page.html', {'products': products, 'vendors': farmer, 'cart': cart, 'cart_items': cart_items})
 
 @login_required(login_url='login')
 def check_vendor_status(request):
@@ -60,3 +64,8 @@ def check_vendor_status(request):
         return redirect('products-pages')  # Redirect to the product pages view if the user is a vendor
     except Farmers.DoesNotExist:
         return redirect('vendor-form')  # Redirect to the vendor registration form if the user is not a vendor
+    
+def activity(request):
+    context = {}
+    return render(request, 'vendorapp/activity_components.html', context)
+

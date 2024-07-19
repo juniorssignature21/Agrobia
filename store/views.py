@@ -6,6 +6,7 @@ from django.contrib import messages
 from vendor.models import Product
 from categories.models import ProductCategory
 from django.contrib.auth.models import User
+from cart.models import *
 
 
 # def home(request):
@@ -66,10 +67,17 @@ def user_details(request):
     }
     return render(request, 'store/user_profile.html', context)
 
+
 def product_section(request):
+    cart = Cart.objects.get(user=request.user)
+    cart_items = CartItem.objects.filter(cart=cart)
+
     product = Product.objects.all()[:6]
     categories = ProductCategory.objects.all()
-    context = {'product': product, 'categories': categories}
+    context = {'product': product, 'categories': categories,
+               'cart': cart,
+            'cart_items': cart_items,
+            }
     return render(request, 'store/home.html', context)
 
 # def user_img(request):

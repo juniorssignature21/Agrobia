@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="products-grid">
+    {% for product in products %}
+    <a href="{% url 'product' product.id %}">
+     <div class="product-card">
+       <img src="{{product.image.url}}" alt="Apple" />
+      
+      <h3>{{product.name}}</h3>
+       <small>
+        {{product.categories}}
+      </small>
+      <span class="stars" style="color: yellow">★★★★★</span>
+       <p>#{{product.price}}</p>
+    </div>
+      </a>
+     {% endfor %}
+    </div>
+{% endblock content %}
